@@ -4,6 +4,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -16,9 +18,15 @@ public class BitkubTickerService {
 
    @Autowired
    private RestTemplate restTemplate;
+   @Autowired
+   private  URLValues urlValues;
+   //@Autowired
+   //private Configuration urlValues;
    public BitkubCoins getBitkubTickerDetails(String coin){
        BitkubCoins b = new BitkubCoins();
-       ResponseEntity<String> response=getTicker(); // bitkut ticker call
+       System.out.println("urlValuesurlValues"+urlValues.getMessage());
+       System.out.println("urlValuesurlValues"+urlValues.message);
+       ResponseEntity<String> response=getTicker(coin); // bitkut ticker call
        if(response.getStatusCode()== HttpStatus.OK) {
 
            try {
@@ -84,10 +92,13 @@ public class BitkubTickerService {
 
    }
 
-   private ResponseEntity<String> getTicker(){
+   private ResponseEntity<String> getTicker(String coin){
 
-       //String urlBit=${"spring.bitkub.ticker"};
-     return restTemplate.getForEntity("https://api.bitkub.com/api/market/ticker",String.class);
+       //String urlBit=${"spring.bitkub.ticker"};https://api.bitkub.com/api/market/ticker?sym=THB_ETH&lmt=10
+      // urlValues.setUrl(${spring.bitkub.ticker}); //@value failed so using setURL method
+      // System.out.println("uri:::::::"+urlValues.getUrl());
+     return restTemplate.getForEntity(urlValues.getUrl()+"?"+BitConstants.SYM+"="+coin,String.class);
+       //return new RestTemplate().getForEntity(urlValues.getUrl(),String.class);
    }
 }
 

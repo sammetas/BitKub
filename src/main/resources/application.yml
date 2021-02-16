@@ -1,0 +1,21 @@
+spring:
+       application:
+            #name: bitkub-uat
+           #message: This message NOT from Cloud !!!!
+
+       profiles:
+            active: dev
+       cloud:
+           config:
+               #uri: http://localhost:8888
+               #profile: dev
+               name: bitub-uat
+
+
+server:
+    port: 8082
+management.endpoints.web.exposure.include: "*"
+
+bitkub:
+     ticker:
+        url: https://api.bitkub.com/api/market/ticker

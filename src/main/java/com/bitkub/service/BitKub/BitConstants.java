@@ -9,6 +9,7 @@ public class BitConstants {
     public static final String LOW_24 = "low24hr";
     public static final String PREV_CLOSE = "prevClose";
     public static final String PREV_OPEN = "prevOpen";
+    public static final String SYM ="sym" ;
     public static String LAST="last";
     public static String CHANGE="change";
     public static String ID="id";

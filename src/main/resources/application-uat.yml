@@ -1,0 +1,10 @@
+spring:
+  application:
+    name : bitkub-uat
+  bitkub:
+    ticker: https://api.bitkub.com/api/market/ticker
+
+server:
+  port: 8083
+management.endpoints.web.exposure.include: "*"
+

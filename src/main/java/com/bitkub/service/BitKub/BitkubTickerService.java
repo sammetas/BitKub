@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.HashMap;
 
 @Component
+@RefreshScope
 public class BitkubTickerService {
 
    @Autowired
@@ -24,7 +26,7 @@ public class BitkubTickerService {
    //private Configuration urlValues;
    public BitkubCoins getBitkubTickerDetails(String coin){
        BitkubCoins b = new BitkubCoins();
-       System.out.println("urlValuesurlValues"+urlValues.getMessage());
+       System.out.println("urlValuesurlValues"+urlValues.getUrl());
        System.out.println("urlValuesurlValues"+urlValues.message);
        ResponseEntity<String> response=getTicker(coin); // bitkut ticker call
        if(response.getStatusCode()== HttpStatus.OK) {
@@ -86,8 +88,7 @@ public class BitkubTickerService {
          }
 
 
-
-
+       System.out.println("coin"+c.getLast());
        return  c;
 
    }

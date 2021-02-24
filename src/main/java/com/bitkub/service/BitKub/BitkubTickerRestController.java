@@ -2,6 +2,7 @@ package com.bitkub.service.BitKub;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,7 +12,7 @@ import java.util.HashMap;
 
 @RestController
 @RequestMapping("/bitkub")
-@RefreshScope
+
 public class BitkubTickerRestController {
     HashMap<String ,Coin> coinMap= new HashMap<>();
     @Autowired

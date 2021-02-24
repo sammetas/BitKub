@@ -1,6 +1,6 @@
 spring:
        application:
-            #name: bitkub-uat
+            name: bitKub-uat-dev
            #message: This message NOT from Cloud !!!!
 
        profiles:
@@ -14,8 +14,23 @@ spring:
 
 server:
     port: 8082
+    #ssl:
+      #  key-alias: selfsigned_localhost_sslserver
+       # key-password: changeit
+     #   key-store: D:\ProjectB\BitKub\src\main\resources\ssl-server.jks
+       # key-store-provider: SUN
+      #  key-store-type: JKS
+
 management.endpoints.web.exposure.include: "*"
 
 bitkub:
      ticker:
         url: https://api.bitkub.com/api/market/ticker
+eureka:
+      serviceUrl:
+              default: http://localhost:8761/eureka/
+      client:
+            registerWithEureka: true
+            fetchRegistry: true
+            instance:
+                  preferIpAddress: true

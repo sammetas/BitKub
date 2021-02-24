@@ -1,3 +1,4 @@
+/*
 package com.bitkub.service.BitKub;
 
 import org.testng.annotations.Test;
@@ -11,3 +12,4 @@ class BitKubApplicationTests {
 	}
 
 }
+*/

@@ -11,7 +11,7 @@ import org.springframework.web.client.RestTemplate;
 import java.net.URI;
 
 @SpringBootApplication
-@EnableDiscoveryClient
+//@EnableDiscoveryClient
 
 public class BitKubApplication {
 
